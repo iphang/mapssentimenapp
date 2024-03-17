@@ -1,0 +1,67 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analisis Sentiment</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="twiter-logo">
+        <svg
+          style="color: white"
+          xmlns="http://www.w3.org/2000/svg"
+          width="64"
+          height="64"
+          fill="currentColor"
+          class="bi bi-twitter"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
+            fill="white"
+          ></path>
+        </svg>
+      </div>
+      <h1 class="title">
+        Selamat datang di analisis sentiment kuliah daring pada twitter
+      </h1>
+      <form action="{{ url_for('predict')}}" method="post">
+        <div class="input-group">
+          <textarea
+            name="tweet"
+            id="tweet"
+            cols="20"
+            rows="10"
+            placeholder="isikan teks tweet untuk dianalisis disini"
+          ></textarea>
+          <button class="btn">Klasifikasi</button>
+        </div>
+      </form>
+      <h4 class="sub-title">Preprocessing & Hasil klasifikasi Tweet</h4>
+      <div class="result">
+        <h5 class="desc-title">Case Folding</h5>
+        <p class="desc">{{ case_folding }}</p>
+        <h5 class="desc-title">Cleansing</h5>
+        <p class="desc">{{ cleansing }}</p>
+        <h5 class="desc-title">Normalisasi</h5>
+        <p class="desc">{{ normalization }}</p>
+        <h5 class="desc-title">Filtering</h5>
+        <p class="desc">{{ filtering }}</p>
+        <h5 class="desc-title">Stemming</h5>
+        <p class="desc">{{ stemming }}</p>
+        <h5 class="desc-title">Tokenizing</h5>
+        <p class="desc">{{ tokenize }}</p>
+        <h5 class="desc-title">Hasil Klasifikasi</h5>
+        <p class="desc">{{ prediction_text }}</p>
+      </div>
+    </div>
+  </body>
+</html>
